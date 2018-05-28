@@ -1,0 +1,1 @@
+(0 to 100).toList.map(num => {if (num%5 == 0 && num%3 == 0) println("typesafe") else if (num%5 == 0) println("type") else if (num%3 == 0) println("safe") else println(num)})
