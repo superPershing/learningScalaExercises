@@ -1,2 +1,2 @@
-Exercises for <<Learning Scala>>  
+Exercises for <\<Learning Scala\>>  
 Just for fun.
