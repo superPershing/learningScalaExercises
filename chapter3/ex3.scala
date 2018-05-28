@@ -1,8 +1,6 @@
-val input = "cyan"
+val input = "yellow"
 var output: String = ""
-for (i <- input) {
-    output = output + String.format("%04x", i.toInt)
-}
+for (i <- input) output = output + i.toInt.toHexString
 println(output)
 
-## TODO What?
+//What dose this question mean?
