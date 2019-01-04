@@ -7,7 +7,7 @@ import scala.io.Source
 object Main extends App {
   def sortFile(oldFilePath: String, newFilePath: String): Unit = {
     val lines: List[List[Int]] = Source.fromFile(oldFilePath).getLines.toList.map { case x: String => x.split(" ").toList.map(_.toInt) }
-    val sortedLines: List[List[Int]] = lines.sortBy(x => (x(0), x(1), x(2)))
+    val sortedLines: List[List[Int]] = lines.sortBy(x => (x(0), -x(2), x(1)))
     val content: String = sortedLines.map { case x: List[Int] => x.mkString(" ") }.mkString("\n")
     val writer: PrintWriter = new PrintWriter(new File(newFilePath))
     writer.write(content)
