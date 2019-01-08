@@ -1,0 +1,1 @@
+Notes about <<Functional Programming in Scala>>
