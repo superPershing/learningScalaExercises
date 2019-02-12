@@ -15,12 +15,12 @@ class utils(var tableName: String, var filePath:String) {
       val user_id = line(0).toInt
       val item_id = line(1).toInt
       val rating = line(2).toInt
-      val time: String = line(3)
+      val time: Long = line(3).toLong
       val preparedStmt: PreparedStatement = connection.prepareStatement(insertSql)
       preparedStmt.setInt(1, user_id)
       preparedStmt.setInt(2, item_id)
       preparedStmt.setInt(3, rating)
-      preparedStmt.setString(4, time)
+      preparedStmt.setLong(4, time)
       preparedStmt.execute
       preparedStmt.close
     }

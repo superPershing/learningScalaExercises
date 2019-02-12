@@ -13,7 +13,7 @@ object Main extends App {
   try {
     Class.forName(driver)
     connection = DriverManager.getConnection(url, username, password)
-    val writeDB = new utils("ml100k", "C:\\Workspace\\Dataset\\ml-100k\\u.data")
+    val writeDB = new utils("ml100k", "/home/tiger/Workspace/Dataset/ml-100k/u.data")
     writeDB.writeMl100k(connection)
   } catch {
     case e: Exception => e.printStackTrace
