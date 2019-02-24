@@ -204,6 +204,22 @@ mv spark-defaults.conf.template spark-defaults.conf
 spark.master    yarn
 ```
 
+#### 监控spark程序
+修改`~/spark-test/spark-2.3.2/conf/spark-defaults.conf`文件，添加
+```
+spark.eventLog.enabled  true
+spark.eventLog.dir hdfs://node-master:9000/spark-logs
+spark.history.provider            org.apache.spark.deploy.history.FsHistoryProvider
+spark.history.fs.logDirectory     hdfs://node-master:9000/spark-logs
+spark.history.fs.update.interval  10s
+spark.history.ui.port             18080
+```
+在HDFS中创建log文件夹和启动历史记录Server
+```
+hdfs dfs -mkdir /spark-logs
+~/spark-test/spark-2.3.2/sbin/start-history-server.sh
+```
+
 #### 提交spark测试任务：
 ```
 ./spark-submit --deploy-mode client --class org.apache.spark.examples.SparkPi spark-2.3.2-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.3.2.jar 10
@@ -226,6 +242,12 @@ ERROR YarnScheduler:70 - Lost executor 1 on dc002: Slave lost
     <value>false</value>
 </property>
 ```
+
+### Web UI汇总
+ - http://master-IP:18080/  Spark History Server
+ - http://master-IP:50070/  Hadoop Overview
+ - http://master-IP:8088/cluster  Hadoop Cluster Information
+
 
 参考资料:  
  - https://hadoop.apache.org/
