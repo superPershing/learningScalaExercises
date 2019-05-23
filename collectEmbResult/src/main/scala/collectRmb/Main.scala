@@ -14,18 +14,13 @@ object Main extends App {
   val inputPath = args(0)
   val outputFilePath = args(1)
 
-  val numPartition = args(2).toInt
-
   var fileNames = List[String]()
-  for (num <- 0 until numPartition) {
-    val count: Int = (num + "").length
-    val name: String = inputPath + "part-" + "0" * (5 - count) + num.toString
-    fileNames = name :: fileNames
-  }
+
+  val files: Array[File] = new java.io.File(inputPath).listFiles.filter(_.getName.endsWith(".csv"))
 
   var lines: List[String] = List[String]()
 
-  for (name <- fileNames) {
+  for (name <- files) {
     lines = lines ::: Source.fromFile(name).getLines().toList.map { case x: String => x.replace(",", " ") }
   }
 
