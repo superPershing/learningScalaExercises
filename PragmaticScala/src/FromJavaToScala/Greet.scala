@@ -1,6 +1,6 @@
 package FromJavaToScala
 
-object Main extends App {
+object Greet extends App {
   for (i <- 1 to 3) {
     print(s"$i,")
   }
