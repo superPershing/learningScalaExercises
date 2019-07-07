@@ -1,0 +1,3 @@
+package UsingTraits
+
+class Animal
